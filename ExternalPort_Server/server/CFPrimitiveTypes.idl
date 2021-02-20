@@ -1,0 +1,20 @@
+#ifndef CX_CFPRIMITIVETYPES_IDL
+#define CX_CFPRIMITIVETYPES_IDL
+
+
+module CF {
+    typedef boolean BooleanType;
+    typedef char CharType;
+    typedef long long LongLongType;
+    typedef long LongType;
+    typedef short ShortType;
+    typedef unsigned long long ULongLongType;
+    typedef unsigned long ULongType;
+    typedef unsigned short UShortType;
+    typedef float FloatType;
+    typedef double DoubleType;
+    typedef string StringType;
+    typedef octet OctetType;
+};
+
+#endif

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LocalDebuggerCommandArguments>-ORBInitRef dataOut=IOR:010000001b00000049444c3a446174612f50726f636573736564446174613a312e300000010000000000000040000000010102000e0000003139322e3136382e302e313236000dda2000000001921800654f5242a64700000000000005454f5242000000040000000000000000000000</LocalDebuggerCommandArguments>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
+</Project>

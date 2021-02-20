@@ -1,0 +1,33 @@
+#ifndef CX_DATAFILE_IDL
+#define CX_DATAFILE_IDL
+#include <CFOctetSeq.idl>
+
+
+module Data {
+    interface ProcessedData {
+        void pushProcessedData(
+            in CF::OctetSeq pkt
+            );
+    };
+
+    interface OpenData {
+        void pushOpenData(
+            in CF::OctetSeq pkt
+            );
+    };
+
+    interface EncryptedData {
+        void pushEncryptedData(
+            in CF::OctetSeq pkt
+            );
+    };
+
+    interface MhalData {
+        void pushMhalData(
+            in CF::OctetSeq pkt
+            );
+    };
+
+};
+
+#endif

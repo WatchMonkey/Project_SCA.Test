@@ -1,0 +1,10 @@
+#ifndef CX_CFOCTETSEQ_IDL
+#define CX_CFOCTETSEQ_IDL
+#include <CFPrimitiveTypes.idl>
+
+
+module CF {
+    typedef sequence <OctetType> OctetSeq;
+};
+
+#endif
