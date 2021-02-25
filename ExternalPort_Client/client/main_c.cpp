@@ -22,6 +22,7 @@ EORB_MAIN (client)
       CORBA::ORB_var orb;
       //GreetingService_var greeter;
 	  ProcessedData_var process;
+	  ProcessedData_var process_extern;
       CORBA::String_var returned;
 
 	  CORBA::ORB::ObjectIdList_ptr temp_idlist;
@@ -38,8 +39,10 @@ EORB_MAIN (client)
 	  }
 
 	  temp_middle_str[0x0] = "-ORBInitRef";
-	  temp_middle_str[0x1] = "dOut=corbaloc:iiop:192.168.0.127:12900/dOut";
+	  temp_middle_str[0x1] = "dOut=corbaloc:iiop:192.168.0.138:12900/dOut";
 	  //temp_middle_str[0x1] = "dOut=IOR:010000001b00000049444c3a446174612f50726f636573736564446174613a312e30000000000000";
+
+	  process_extern = ProcessedData::_duplicate(process EORB_ENV_VARN);
 
       // Initialize the ORB
 	  orb = CORBA::ORB_init (temp_middle, temp_middle_str EORB_ENV_VARN);

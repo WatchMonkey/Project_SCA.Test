@@ -85,7 +85,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>E:\WorkSpace-SCA\Folder_Common\Eorb-xzw\lib\win64-msdev-x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>E:\WorkSpace-SCA\Folder_Common\eorb_20210220\eorb\lib\win64-msdev-x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>e_orb.lib;ec_orb.lib;ec_iiop.lib;ec_tcp.lib;ec_core.lib;ec_os.lib;e_poa.lib;e_any.lib;e_naming_s.lib;ec_udp.lib;ec_diop.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
