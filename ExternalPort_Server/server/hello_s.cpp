@@ -17,7 +17,7 @@ const char * POA_GreetingService::_repository_id () const
 
 GreetingService_ptr POA_GreetingService::_this (EORB_ENV_ARG1)
 {
-   CORBA::Object_var obj (_this_ (EORB_ENV_VAR1));
+   CORBA::Object_var obj (_this_ ());
    return (GreetingService::_narrow (obj.in () EORB_ENV_VARN));
 }
 
@@ -42,7 +42,7 @@ void POA_GreetingService::_dispatch_shutdown
 
    _request_.get_args (0, 0UL);
 
-   _srv_->shutdown (EORB_ENV_VAR1);
+   _srv_->shutdown ();
    EORB_CHECK_ENV_RETURN_VOID;
 
    if (_request_.reply_expected ())

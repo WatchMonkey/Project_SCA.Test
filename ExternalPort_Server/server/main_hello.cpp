@@ -87,12 +87,12 @@ int main_back_two (int argc, char ** argv)
 	  EORB_CHECK_ENV;
       // Listen for requests
  
-      orb->run (EORB_ENV_VAR1);
+      orb->run ();
       EORB_CHECK_ENV;
 
       // Clean up
 
-      orb->destroy (EORB_ENV_VAR1);
+      orb->destroy ();
       EORB_CHECK_ENV;
    }
    EORB_CATCH (CORBA::Exception, exc)

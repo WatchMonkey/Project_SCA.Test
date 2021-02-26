@@ -49,21 +49,21 @@ int main_back (int argc, char ** argv)
 		temp_argv[0x1] = "-ORBInitRef";
 		temp_argv[0x2] = "NameService=corbaloc:iiop:1.2@192.168.0.242:2809/NameService";
 		//temp_argv[0x2] = "Filter=IOR:010000002f00000049444c3a4d616e61676564436f6d704d6f64756c652f4d616e61676564436f6d70496e746572666163653a312e30000003000000044f415440000000010102000e0000003139322e3136382e302e323432003fe02000000001921800654f52421aca8e530100000005454f5242000000040000000100000000000000004f41544c000000010102001a0000002f746d702f75696f702e706c6e785f61726d2e6b73384a64730000002000000001921800654f52421aca8e530100000005454f52420000000400000001000000000000000000000040000000010102000e0000003139322e3136382e302e3234320035a52000000001921800654f52421aca8e530100000005454f5242000000040000000100000000000000";
-		orb = CORBA::ORB_init(temp_argc,temp_argv EORB_ENV_VARN);
-		EORB_CHECK_ENV;
+		orb = CORBA::ORB_init(temp_argc,temp_argv );
+		//EORB_CHECK_ENV;
 
 		// Get the RootPOA
-		obj = orb->resolve_initial_references ("RootPOA" EORB_ENV_VARN);
-		EORB_CHECK_ENV;
-		poa = PortableServer::POA::_narrow (obj EORB_ENV_VARN);
-		EORB_CHECK_ENV;
+		obj = orb->resolve_initial_references ("RootPOA" );
+		//EORB_CHECK_ENV;
+		poa = PortableServer::POA::_narrow (obj );
+		//EORB_CHECK_ENV;
 
 		
 		//get nameservice
-		obj = orb->resolve_initial_references("NameService" EORB_ENV_VARN);
-		EORB_CHECK_ENV;
-		name = CosNaming::NamingContext::_narrow(obj EORB_ENV_VARN);
-		EORB_CHECK_ENV;
+		obj = orb->resolve_initial_references("NameService" );
+		//EORB_CHECK_ENV;
+		name = CosNaming::NamingContext::_narrow(obj );
+		//EORB_CHECK_ENV;
 		/*if(CORBA::is_nil(name) == true){
 			EORB_THROW_RETURN()
 		}*/
@@ -77,22 +77,22 @@ int main_back (int argc, char ** argv)
 		domain_com.id = temp_name_one;
 		domain_com.kind = "";
 		domain[0x0] = domain_com;
-		obj = name->resolve(domain EORB_ENV_ARGN);
-		EORB_CHECK_ENV;
-		domain_ctx = CosNaming::NamingContext::_narrow(obj EORB_ENV_ARGN);
-		EORB_CHECK_ENV;
+		obj = name->resolve(domain );
+		//EORB_CHECK_ENV;
+		domain_ctx = CosNaming::NamingContext::_narrow(obj);
+		//EORB_CHECK_ENV;
 		
 
 		//instance servant
-		servant = new externport_impl (orb EORB_ENV_VARN);
-		EORB_CHECK_ENV;
+		servant = new externport_impl (orb );
+		//EORB_CHECK_ENV;
 		//active servant
-		oid = poa->activate_object (servant EORB_ENV_VARN);
-		EORB_CHECK_ENV;
+		oid = poa->activate_object (servant );
+		//EORB_CHECK_ENV;
 
 		// Register reference
-		obj = poa->servant_to_reference (servant EORB_ENV_VARN);
-		EORB_CHECK_ENV;
+		obj = poa->servant_to_reference (servant );
+		//EORB_CHECK_ENV;
 		char* temp_str = orb->object_to_string(obj);
 		printf("==<Info>the string:%s\n",temp_str);
 		
@@ -103,18 +103,18 @@ int main_back (int argc, char ** argv)
 		CosNaming::Name port(0x1);
 		port.length(0x1);
 		port[0x0] = port_servant;
-		domain_ctx->bind(port,obj EORB_ENV_ARGN);
-		EORB_CHECK_ENV;
+		domain_ctx->bind(port,obj );
+		//EORB_CHECK_ENV;
 		/*
-		orb->register_initial_reference ("dataOut", obj EORB_ENV_VARN);
-		EORB_CHECK_ENV;
+		orb->register_initial_reference ("dataOut", obj );
+		//EORB_CHECK_ENV;
 		*/
 		// Listen for requests
-		orb->run (EORB_ENV_VAR1);
-		EORB_CHECK_ENV;
+		orb->run ();
+		//EORB_CHECK_ENV;
 		// Clean up
-		orb->destroy (EORB_ENV_VAR1);
-		EORB_CHECK_ENV;
+		orb->destroy ();
+		//EORB_CHECK_ENV;
 	}
 	EORB_CATCH (CORBA::Exception, exc)
 	{

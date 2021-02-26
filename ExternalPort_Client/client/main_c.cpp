@@ -1,5 +1,9 @@
 #include "hello.h"
 #include "DataFile.h"
+
+#include <Windows.h>
+#include <iostream>
+#include <cstdlib>
 /*
  The GreetingService client example performs the minimal client tasks:
 
@@ -10,8 +14,18 @@
 
 using namespace Data;
 
+
+CORBA::ORB_var orb;
+
+
+DWORD WINAPI MyThreadProc1(LPVOID lpParameter);
+
 EORB_MAIN (client)
 {
+	HANDLE handle1;
+	handle1 = CreateThread(NULL,0x0,MyThreadProc1,0x0,CREATE_SUSPENDED,0x0);
+	
+
    EORB_DECLARE_ENV;
 
    EORB_IIOP_plugin ();
@@ -96,8 +110,10 @@ EORB_MAIN (client)
 		  return 0x0;
 	  }
 
-      orb->destroy (EORB_ENV_VAR1);
-      EORB_CHECK_ENV;
+	  orb->shutdown(true EORB_ENV_VARN);
+	  EORB_CHECK_ENV;
+	  orb->destroy(EORB_ENV_VAR1);
+	  EORB_CHECK_ENV;
    }
    EORB_CATCH (CORBA::Exception, exc)
    {
@@ -106,6 +122,27 @@ EORB_MAIN (client)
    EORB_END_TRY
 
    printf ("Hello portable client complete\n");
+   
+   CloseHandle(handle1);
 
    return 0;
 } 
+
+
+
+
+
+DWORD WINAPI MyThreadProc1(LPVOID lpParameter)
+{
+	cout<<"The MyThreadProc1 is Running !"<<endl;
+
+	/*
+	orb->shutdown(true EORB_ENV_VARN);
+	EORB_CHECK_ENV;
+	orb->destroy(EORB_ENV_VAR1);
+	EORB_CHECK_ENV;
+	*/
+	std::cout<<"the orb destroy"<<std::endl;
+
+	return 0;
+}

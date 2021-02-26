@@ -17,7 +17,7 @@ const char * POA_Data::ProcessedData::_repository_id () const
 
 Data::ProcessedData_ptr POA_Data::ProcessedData::_this (EORB_ENV_ARG1)
 {
-   CORBA::Object_var obj (_this_ (EORB_ENV_VAR1));
+   CORBA::Object_var obj (_this_ ());
    return (Data::ProcessedData::_narrow (obj.in () EORB_ENV_VARN));
 }
 
@@ -74,7 +74,7 @@ const char * POA_Data::OpenData::_repository_id () const
 
 Data::OpenData_ptr POA_Data::OpenData::_this (EORB_ENV_ARG1)
 {
-   CORBA::Object_var obj (_this_ (EORB_ENV_VAR1));
+   CORBA::Object_var obj (_this_ ());
    return (Data::OpenData::_narrow (obj.in () EORB_ENV_VARN));
 }
 
@@ -131,7 +131,7 @@ const char * POA_Data::EncryptedData::_repository_id () const
 
 Data::EncryptedData_ptr POA_Data::EncryptedData::_this (EORB_ENV_ARG1)
 {
-   CORBA::Object_var obj (_this_ (EORB_ENV_VAR1));
+   CORBA::Object_var obj (_this_ ());
    return (Data::EncryptedData::_narrow (obj.in () EORB_ENV_VARN));
 }
 
@@ -188,7 +188,7 @@ const char * POA_Data::MhalData::_repository_id () const
 
 Data::MhalData_ptr POA_Data::MhalData::_this (EORB_ENV_ARG1)
 {
-   CORBA::Object_var obj (_this_ (EORB_ENV_VAR1));
+   CORBA::Object_var obj (_this_ ());
    return (Data::MhalData::_narrow (obj.in () EORB_ENV_VARN));
 }
 
